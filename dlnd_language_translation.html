@@ -11930,6 +11930,8 @@ les états-unis est parfois occupé en janvier , et il est parfois chaud en nove
     <span class="n">source_text_sentences</span> <span class="o">=</span> <span class="n">source_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">target_text_sentences</span> <span class="o">=</span> <span class="n">target_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     
+    <span class="c1"># Scan source sentences and replace characters</span>
+    <span class="c1"># not in source_vocab_to_int with &#39;&lt;UNK&gt;&#39; </span>
     <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">source_text_sentences</span><span class="p">:</span>
         <span class="n">sentence_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">):</span>
@@ -11939,6 +11941,8 @@ les états-unis est parfois occupé en janvier , et il est parfois chaud en nove
                 <span class="n">sentence_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">source_vocab_to_int</span><span class="p">[</span><span class="s1">&#39;&lt;UNK&gt;&#39;</span><span class="p">])</span>
         <span class="n">source_text_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentence_ids</span><span class="p">)</span>
 
+    <span class="c1"># Just as with source sentences, but here also append</span>
+    <span class="c1"># &#39; &lt;EOS&gt;&#39; to each target sentence</span>
     <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">target_text_sentences</span><span class="p">:</span>
         <span class="n">sentence</span> <span class="o">=</span> <span class="n">sentence</span> <span class="o">+</span> <span class="s1">&#39; &lt;EOS&gt;&#39;</span>
         <span class="n">sentence_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
